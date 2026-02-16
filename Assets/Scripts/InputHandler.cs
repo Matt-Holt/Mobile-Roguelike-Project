@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class InputHandler : MonoBehaviour
 
     void ClickObject(Vector2 tapPos)
     {
+        if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            return;
+
         Vector2 pos = Camera.main.ScreenToWorldPoint(tapPos);
         RaycastHit2D hit = Physics2D.Raycast(pos, transform.right * 0.5f, 0.5f);
         if (hit.collider != null)

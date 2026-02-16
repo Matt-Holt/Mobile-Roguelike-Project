@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardDock : MonoBehaviour
+public class CardDeck : MonoBehaviour
 {
     private bool display;
 
@@ -31,9 +31,9 @@ public class CardDock : MonoBehaviour
         foreach (GameObject card in cards)
         {
             GameObject cardInstance = Instantiate(card, transform.position, Quaternion.identity);
-            cardInstance.transform.parent = transform;
+            cardInstance.transform.SetParent(transform);
             cardInstance.GetComponent<RectTransform>().localPosition = new Vector3(-455 + (cardNum * 455), 164, 0);
-            cardInstance.GetComponent<RectTransform>().localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            cardInstance.GetComponent<RectTransform>().localScale = new Vector3(1.4f, 1.4f, 1.4f);
             cardNum++;
         }
     }

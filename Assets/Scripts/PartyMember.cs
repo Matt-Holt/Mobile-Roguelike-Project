@@ -40,7 +40,7 @@ public class PartyMember : MonoBehaviour
     public void SelectedPartyMember(GameObject partyMember)
     {
         selectedPartyMember = partyMember;
-        CardDock deck = FindObjectOfType<CardDock>();
+        CardDeck deck = FindObjectOfType<CardDeck>();
         deck.UpdateCards(cards);
         deck.DisplayDeck();
     }
@@ -48,6 +48,6 @@ public class PartyMember : MonoBehaviour
     public static void DeselectPartyMember()
     {
         selectedPartyMember = null;
-        FindObjectOfType<CardDock>().HideDeck();
+        FindObjectOfType<CardDeck>().HideDeck();
     }
 }
