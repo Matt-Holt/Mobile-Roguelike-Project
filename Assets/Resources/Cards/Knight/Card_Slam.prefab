@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5352561c05a83e445bb92f224382a224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueprint: {fileID: 2219733083205887494}
 --- !u!1 &3794062792778567446
 GameObject:
   m_ObjectHideFlags: 0

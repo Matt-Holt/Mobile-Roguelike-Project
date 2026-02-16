@@ -37,7 +37,7 @@ public class InputHandler : MonoBehaviour
             if (tag == "PartyMember")
             {
                 PartyMember member = hit.collider.GetComponent<PartyMember>();
-                member.SelectedPartyMember(hit.collider.gameObject);
+                member.SelectPartyMember(member);
             }
         }
         else

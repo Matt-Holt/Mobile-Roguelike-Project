@@ -30,10 +30,15 @@ public class CardDeck : MonoBehaviour
         int cardNum = 0;
         foreach (GameObject card in cards)
         {
-            GameObject cardInstance = Instantiate(card, transform.position, Quaternion.identity);
-            cardInstance.transform.SetParent(transform);
-            cardInstance.GetComponent<RectTransform>().localPosition = new Vector3(-455 + (cardNum * 455), 164, 0);
-            cardInstance.GetComponent<RectTransform>().localScale = new Vector3(1.4f, 1.4f, 1.4f);
+            if (card != null)
+            {
+                GameObject cardInstance = Instantiate(card, transform.position, Quaternion.identity);
+                cardInstance.transform.SetParent(transform);
+                cardInstance.GetComponent<RectTransform>().localPosition = new Vector3(-455 + (cardNum * 455), 164, 0);
+                cardInstance.GetComponent<RectTransform>().localScale = new Vector3(1.4f, 1.4f, 1.4f);
+                cardInstance.GetComponent<Card>().SetDeck(this);
+                cardInstance.GetComponent<Card>().SetBlueprint(card);
+            }
             cardNum++;
         }
     }

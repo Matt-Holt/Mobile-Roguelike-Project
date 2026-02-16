@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class PartyMember : MonoBehaviour
 {
-    private static GameObject selectedPartyMember;
+    public static PartyMember selectedPartyMember;
     [SerializeField] private string memberName;
     [SerializeField] private Color colour;
     [SerializeField] private GameObject[] cards;
@@ -37,7 +37,29 @@ public class PartyMember : MonoBehaviour
 
     }
 
-    public void SelectedPartyMember(GameObject partyMember)
+    public void RemoveCard(GameObject card)
+    {
+        for (int i = 0; i < cards.Length; i++)
+        {
+            if (cards[i] == card)
+            {
+                cards[i] = null;
+                return;
+            }
+        }
+    }
+
+    public bool IsDeckEmpty()
+    {
+        foreach (GameObject card in cards)
+        {
+            if (card != null)
+                return false;
+        }
+        return true;
+    }
+
+    public void SelectPartyMember(PartyMember partyMember)
     {
         selectedPartyMember = partyMember;
         CardDeck deck = FindObjectOfType<CardDeck>();
