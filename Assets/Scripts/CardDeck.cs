@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CardDeck : MonoBehaviour
 {
     private bool display;
+    public Card lastUsedCard = null;
 
     // Start is called before the first frame update
     void Start()

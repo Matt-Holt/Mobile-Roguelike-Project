@@ -36,8 +36,32 @@ public class InputHandler : MonoBehaviour
             string tag = hit.collider.tag;
             if (tag == "PartyMember")
             {
-                PartyMember member = hit.collider.GetComponent<PartyMember>();
-                member.SelectPartyMember(member);
+                Card lastUsedCard = FindObjectOfType<CardDeck>().lastUsedCard;
+                if (lastUsedCard != null)
+                {
+                    //TO:DO Buff party member
+                }
+                else
+                {
+                    PartyMember member = hit.collider.GetComponent<PartyMember>();
+                    member.SelectPartyMember(member);
+                }
+            }
+            else if (tag == "Enemy")
+            {
+                Card lastUsedCard = FindObjectOfType<CardDeck>().lastUsedCard;
+                print(lastUsedCard);
+                if (lastUsedCard != null)
+                {
+                    //TO:DO Attack enemy with card
+                    EnemyHealth enemy = hit.collider.GetComponent<EnemyHealth>();
+                    enemy.Damage(lastUsedCard.value);
+                    FindObjectOfType<CardDeck>().lastUsedCard = null;
+                }
+                else
+                {
+                    //TO:DO Show enemy info
+                }
             }
         }
         else
